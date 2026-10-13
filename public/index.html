@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book a Detail — Super Cleaners Detailing | Bakersfield, CA</title>
+<meta name="description" content="Request a mobile detailing appointment in Bakersfield. Pick your package and a time — John confirms every booking personally. No prepayment." />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-name">SUPER CLEANERS</div>
+      <div class="brand-sub">MOBILE AUTO DETAILING · BAKERSFIELD, CA</div>
+    </div>
+    <a class="header-phone" href="tel:6613765857">(661) 376-5857</a>
+  </div>
+  <div class="faith-line">Bold service. Kingdom focused. <span>In Jesus.</span></div>
+</header>
+
+<main class="wrap">
+  <h1>Book your detail</h1>
+  <p class="lede">We come to you — home or work. Pick a package and a time, send the request, and John will confirm personally by text. <strong>No prepayment</strong> — you pay after your detail.</p>
+
+  <div class="progress" id="progress" aria-hidden="true">
+    <div class="progress-step is-active" data-dot="1">Service</div>
+    <div class="progress-step" data-dot="2">Vehicle</div>
+    <div class="progress-step" data-dot="3">Details</div>
+    <div class="progress-step" data-dot="4">Time</div>
+    <div class="progress-step" data-dot="5">Payment</div>
+  </div>
+
+  <form id="bookingForm" novalidate>
+    <!-- STEP 1: package -->
+    <fieldset class="step is-active" data-step="1">
+      <legend>1 · Choose your service</legend>
+      <div id="packageList" class="card-grid"><!-- rendered by app.js --></div>
+      <div id="addonBox" class="addon-box" hidden>
+        <label class="check-row">
+          <input type="checkbox" id="addonSunroof" />
+          <span>Add sunroof / panoramic roof <strong>+$75</strong> (headliner service)</span>
+        </label>
+      </div>
+      <p class="step-error" data-error hidden></p>
+      <div class="nav">
+        <span></span>
+        <button type="button" class="btn btn-primary" data-next>Continue</button>
+      </div>
+    </fieldset>
+
+    <!-- STEP 2: vehicle size -->
+    <fieldset class="step" data-step="2" hidden>
+      <legend>2 · Your vehicle size</legend>
+      <div class="card-grid two">
+        <label class="choice-card">
+          <input type="radio" name="sizeClass" value="car" />
+          <span class="choice-title">Car</span>
+          <span class="choice-sub">Sedans, coupes, hatchbacks</span>
+          <span class="choice-price" data-price-for="car"></span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="sizeClass" value="suv" />
+          <span class="choice-title">SUV / Truck / Van</span>
+          <span class="choice-sub">Crossovers, SUVs, pickups, vans</span>
+          <span class="choice-price" data-price-for="suv"></span>
+        </label>
+      </div>
+      <p class="step-error" data-error hidden></p>
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-back>Back</button>
+        <button type="button" class="btn btn-primary" data-next>Continue</button>
+      </div>
+    </fieldset>
+
+    <!-- STEP 3: details (one step) -->
+    <fieldset class="step" data-step="3" hidden>
+      <legend>3 · Your details</legend>
+      <div class="fields">
+        <label class="field">
+          <span>Full name *</span>
+          <input type="text" id="fName" autocomplete="name" placeholder="Your name" />
+        </label>
+        <label class="field">
+          <span>Mobile number *</span>
+          <input type="tel" id="fPhone" autocomplete="tel" inputmode="tel" placeholder="(661) 555-0123" />
+        </label>
+        <label class="field">
+          <span>Email (optional)</span>
+          <input type="email" id="fEmail" autocomplete="email" placeholder="you@email.com" />
+        </label>
+        <label class="field">
+          <span>Service address *</span>
+          <input type="text" id="fAddress" autocomplete="street-address" placeholder="Street address — where we come to detail" />
+        </label>
+        <label class="field short">
+          <span>ZIP code *</span>
+          <input type="text" id="fZip" autocomplete="postal-code" inputmode="numeric" placeholder="93308" />
+        </label>
+        <div class="field-row">
+          <label class="field">
+            <span>Vehicle year</span>
+            <input type="text" id="fVehYear" inputmode="numeric" placeholder="2021" />
+          </label>
+          <label class="field">
+            <span>Make *</span>
+            <input type="text" id="fVehMake" placeholder="Toyota" />
+          </label>
+          <label class="field">
+            <span>Model *</span>
+            <input type="text" id="fVehModel" placeholder="Camry" />
+          </label>
+        </div>
+        <label class="field">
+          <span>Anything we should know? (optional)</span>
+          <textarea id="fNotes" rows="3" placeholder="Gate code, pet hair, stains, where the vehicle will be parked…"></textarea>
+        </label>
+        <div class="field">
+          <span>Have we detailed your vehicle before?</span>
+          <div class="radio-row">
+            <label class="radio-pill"><input type="radio" name="firstTime" value="yes" checked /> First time</label>
+            <label class="radio-pill"><input type="radio" name="firstTime" value="no" /> I've booked before</label>
+          </div>
+        </div>
+      </div>
+      <p class="step-error" data-error hidden></p>
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-back>Back</button>
+        <button type="button" class="btn btn-primary" data-next>Continue</button>
+      </div>
+    </fieldset>
+
+    <!-- STEP 4: time -->
+    <fieldset class="step" data-step="4" hidden>
+      <legend>4 · Pick a date &amp; time</legend>
+      <p class="hint">Booking hours are <strong>7:00 AM – 7:00 PM</strong>. Your detail must fit inside that window.</p>
+      <label class="field short">
+        <span>Date *</span>
+        <input type="date" id="fDate" />
+      </label>
+      <div id="slotGrid" class="slot-grid" aria-live="polite">
+        <p class="hint">Choose a date to see open start times.</p>
+      </div>
+      <div class="afterhours-card">
+        <strong>Need after-hours?</strong> Anything outside 7 AM–7 PM is by phone only — call
+        <a href="tel:6613765857">(661) 376-5857</a>. A <strong>$50 emergency call-out fee</strong> applies,
+        and a <strong>card on file is required</strong> for every after-hours appointment.
+      </div>
+      <p class="step-error" data-error hidden></p>
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-back>Back</button>
+        <button type="button" class="btn btn-primary" data-next>Continue</button>
+      </div>
+    </fieldset>
+
+    <!-- STEP 5: payment + consent -->
+    <fieldset class="step" data-step="5" hidden>
+      <legend>5 · Payment &amp; send request</legend>
+      <div class="summary" id="summaryBox"><!-- rendered by app.js --></div>
+
+      <h2 class="subhead">How will you pay after your detail?</h2>
+      <p class="hint"><strong>No charge today.</strong> We charge after your detail is done.</p>
+      <div class="card-grid two">
+        <label class="choice-card">
+          <input type="radio" name="paymentMethod" value="card" />
+          <span class="choice-title">Card on file</span>
+          <span class="choice-sub">Save a card securely — charged only after your detail.</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="paymentMethod" value="venmo" />
+          <span class="choice-title">Venmo</span>
+          <span class="choice-sub">Pay by Venmo after your detail.</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="paymentMethod" value="zelle" />
+          <span class="choice-title">Zelle</span>
+          <span class="choice-sub">Pay by Zelle after your detail.</span>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="paymentMethod" value="cash" />
+          <span class="choice-title">Cash</span>
+          <span class="choice-sub">Pay cash after your detail.</span>
+        </label>
+      </div>
+
+      <div id="cardBox" class="card-box" hidden>
+        <p id="cardExplain" class="hint"></p>
+        <div id="squareCardMount"></div>
+        <p id="squareAltNote" class="hint" hidden>
+          Secure card entry isn't available right this second — submit your request anyway and
+          John will text you a secure link to save your card. Still no charge today.
+        </p>
+        <label class="check-row" id="cardOptInRow" hidden>
+          <input type="checkbox" id="cardSaveOptIn" />
+          <span>Save a card on file for faster checkout next time (optional).</span>
+        </label>
+      </div>
+
+      <div class="consent-box">
+        <h2 class="subhead">Text message consent</h2>
+        <label class="check-row">
+          <input type="checkbox" id="consentTransactional" />
+          <span>
+            <strong>Booking texts.</strong> Text me about my booking — confirmations, reminders, and
+            scheduling updates from Super Cleaners Detailing. Frequency varies by booking activity.
+          </span>
+        </label>
+        <label class="check-row">
+          <input type="checkbox" id="consentMarketing" />
+          <span>
+            <strong>Offers &amp; reminders (optional).</strong> Text me review requests, rebooking
+            reminders, and occasional offers. Max ~4 messages/month.
+          </span>
+        </label>
+        <p class="consent-fineprint">
+          Msg &amp; data rates may apply. Reply <strong>HELP</strong> for help, <strong>STOP</strong> to opt out at any time.
+          See our <a href="https://supercleanersdetailing.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+          and <a href="https://supercleanersdetailing.com/terms" target="_blank" rel="noopener">Terms of Service</a>.
+        </p>
+        <label class="check-row">
+          <input type="checkbox" id="termsAgreed" />
+          <span>
+            I agree to the <a href="https://supercleanersdetailing.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+            and <a href="https://supercleanersdetailing.com/terms" target="_blank" rel="noopener">Terms of Service</a>. *
+          </span>
+        </label>
+      </div>
+
+      <p class="step-error" data-error hidden></p>
+      <div class="nav">
+        <button type="button" class="btn btn-ghost" data-back>Back</button>
+        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">Send my request</button>
+      </div>
+      <p class="hint center">By sending this request you agree to be contacted about your booking. This is a request — John confirms every booking personally.</p>
+    </fieldset>
+  </form>
+
+  <section id="successPanel" class="success" hidden>
+    <div class="success-badge">✓</div>
+    <h2>Request received</h2>
+    <p>John confirms every booking personally — watch for a text shortly to lock in your time.</p>
+    <p class="hint">Need anything sooner? Call or text <a href="tel:6613765857">(661) 376-5857</a>.</p>
+    <p class="hint" id="successRef"></p>
+  </section>
+
+  <footer class="site-footer">
+    <p>Super Cleaners Detailing · Mobile detailing in Bakersfield, CA · <a href="tel:6613765857">(661) 376-5857</a></p>
+    <p><a href="https://supercleanersdetailing.com/privacy-policy">Privacy Policy</a> · <a href="https://supercleanersdetailing.com/terms">Terms of Service</a></p>
+  </footer>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
