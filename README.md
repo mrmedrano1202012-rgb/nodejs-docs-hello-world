@@ -97,3 +97,5 @@ See `.env.example` for a commented template.
   and charges cards himself in Square.
 - ZIP codes outside Kern County prefixes (932/933/935) are flagged in
   John's notification, never blocked.
+
+<!-- deploy trigger: activate Hostinger env (MySQL storage) 2026-10-13 -->
