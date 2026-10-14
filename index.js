@@ -285,4 +285,5 @@ app.listen(config.port, () => {
       `squareClient=${config.squareClientEnabled} squareServer=${config.squareServerEnabled} ` +
       `emailNotify=${config.emailEnabled} smsNotify=${config.smsEnabled}`
   );
+  if (typeof store.probe === 'function') store.probe();
 });
